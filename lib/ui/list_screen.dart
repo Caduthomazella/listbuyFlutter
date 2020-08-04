@@ -48,11 +48,15 @@ class _ListScreenState extends State<ListScreen> {
     );
   }
 
-  void _addItem() {
-    showDialog(
+  void _addItem() async {
+    final item = await showDialog<Item>(
         context: context,
         builder: (BuildContext context) {
           return new AddItem();
         });
+
+    setState(() {
+      items.add(item);
+    });
   }
 }

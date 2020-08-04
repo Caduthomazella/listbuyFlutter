@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:list_c/models/Item.dart';
 
 class AddItem extends StatelessWidget {
   final itemC = TextEditingController();
@@ -18,7 +19,12 @@ class AddItem extends StatelessWidget {
         ),
         FlatButton(
           child: Text('Adicionar'),
-          onPressed: () => print(this.itemC.text),
+          onPressed: () {
+            final item = new Item(title: this.itemC.text);
+            itemC.clear();
+
+            Navigator.of(context).pop(item);
+          },
         ),
       ],
     );
